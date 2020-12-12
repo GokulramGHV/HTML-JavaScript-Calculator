@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>HTML Calculator</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet">
+    <style type="text/css">
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .bg {
+            height: 100vh;
+            width: 100%;
+        }
+
+        .bg {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .a {
+            line-height: 35px;
+            font-size: 30px;
+            width: 100%;
+        }
+
+        .a {
+            border-radius: 3px;
+            border: 1.2px solid #CCC;
+            box-shadow: 3px 3px 3px #CCC;
+            margin: 0px;
+            text-align: center;
+        }
+
+
+        .btn1 {
+            align-items: center;
+            text-align: center;
+            margin-left: 1%;
+            dominant-baseline: no-change;
+            user-select: none;
+            margin-top: 1%;
+        }
+
+        .btn {
+            align-items: center;
+            text-align: center;
+            margin-left: 36%;
+            dominant-baseline: no-change;
+            user-select: none;
+            margin-top: 1%;
+        }
+
+        .btn {
+            display: block;
+            text-align: center;
+            cursor: pointer;
+            border: none;
+            height: 40px;
+            padding: 0 14px;
+            border-radius: 5px;
+            -webkit-box-shadow: inset 0 -3px 0 0 rgba(0, 0, 0, 0.15);
+            -moz-box-shadow: inset 0 -3px 0 0 rgba(0, 0, 0, 0.15);
+            box-shadow: inset 0 -3px 0 0 rgba(0, 0, 0, 0.15);
+            font-size: 18px;
+            line-height: 37px;
+            text-decoration: none;
+
+        }
+
+        .btn1 {
+            display: block;
+            text-align: center;
+            cursor: pointer;
+            border: none;
+            height: 40px;
+            padding: 0 14px;
+            border-radius: 5px;
+            -webkit-box-shadow: inset 0 -3px 0 0 rgba(0, 0, 0, 0.15);
+            -moz-box-shadow: inset 0 -3px 0 0 rgba(0, 0, 0, 0.15);
+            box-shadow: inset 0 -3px 0 0 rgba(0, 0, 0, 0.15);
+            font-size: 18px;
+            line-height: 37px;
+
+            text-decoration: none;
+        }
+
+        .btn1.btn1-success {
+            background: #62a3e0;
+            color: #fafafa;
+        }
+
+        .btn.btn-success {
+            background: #5bb75b;
+            color: #fafafa;
+        }
+
+        .btn1.btn1-success:hover,
+        .btn1.btn1-success:focus {
+            background: ##6aa8e2;
+            color: #fafafa;
+        }
+
+        .action-button:active {
+            transform: translate(0px, 5px);
+            -webkit-transform: translate(0px, 5px);
+            border-bottom: 1px solid;
+        }
+
+        .btn.btn-success:hover,
+        .btn.btn-success:focus {
+            background: #47a247;
+            color: #fafafa;
+        }
+
+        .btn:active {
+            -webkit-box-shadow: none !important;
+            -moz-box-shadow: none !important;
+            box-shadow: none !important;
+        }
+
+        .btn1:active {
+            -webkit-box-shadow: none !important;
+            -moz-box-shadow: none !important;
+            box-shadow: none !important;
+        }
+
+        .btn-inline {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .btn1-inline {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .btn i {
+            line-height: 37px;
+
+        }
+
+        .btn1 i {
+            line-height: 37px;
+
+        }
+
+        .btn:active,
+        .btn:active i {
+            line-height: 40px;
+        }
+
+        .btn1:active,
+        .btn1:active i {
+            line-height: 40px;
+        }
+
+        .animate {
+            transition: all 0.1s;
+            -webkit-transition: all 0.1s;
+        }
+
+        input[type=textfield] {
+            width: 100%;
+            border: 2px solid #aaa;
+            border-radius: 4px;
+            margin: 8px 0;
+            outline: none;
+            padding: 8px;
+            box-sizing: border-box;
+            transition: .3s;
+        }
+
+        input[type=textfield]:focus {
+            border-color: dodgerBlue;
+            box-shadow: 0 0 8px 0 dodgerBlue;
+        }
+
+        h1 {
+            font-size: 40px;
+            margin: 0px;
+            padding: 0px;
+            text-align: center;
+
+        }
+
+        h2 {
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 0px;
+            margin-bottom: 30px;
+            padding: 0px;
+            text-align: right;
+
+    </style>
+</head>
+
+<div class="bg">
+
+    <form name="calculator">
+        <h1>JavaScript Calculator</h1>
+        <h2> - By A.Gokulram</h2>
+        <input type="textfield" name="ans" value="" class="a" size="40" id="myInput">
+        <br>
+        <br>
+        <input type="button" value="Calculate" onClick="calc()" class="b btn btn-inline btn-large btn-success animate action-button" id="myBtn">
+        <input type="reset" value="Reset" class="c btn1 btn1-inline btn-large btn1-success animate action-button">
+</div>
+
+</form>
+<script>
+    var input = document.getElementById("myInput");
+    input.addEventListener("keyup", function(event) {
+        event.preventDefault();
+        if (event.keyCode === 13) {
+            document.getElementById("myBtn").click();
+        }
+    });
+
+    var pi = Math.PI;
+    var h = 6.62607004e-34;
+    var C = 2.9979e+8;
+    var N = 6.0221409e+23;
+    var F = 9.649e+4;
+    var amu = 1.66e-27;
+    var E = Math.E;
+
+    function calc() {
+        document.calculator.ans.value = eval(document.calculator.ans.value);
+
+        function one(number) {
+
+            return number + 10;
+        }
+
+
+    }
+
+    function sin(num) {
+
+        return Math.sin(num);
+    }
+
+    function cos(num1) {
+
+        return Math.cos(num1);
+    }
+
+    function tan(num2) {
+
+        return Math.tan(num2);
+    }
+
+    function cosec(num3) {
+
+        return 1 / Math.sin(num3);
+    }
+
+    function sec(num4) {
+
+        return 1 / Math.cos(num4);
+    }
+
+    function cot(num5) {
+
+        return 1 / Math.tan(num5);
+    }
+
+    // inverse functions 
+
+    function sinIn(num) {
+
+        return Math.asin(num) * 180 / pi;
+    }
+
+    function cosIn(num) {
+
+        return Math.acos(num) * 180 / pi;
+    }
+
+    function tanIn(num) {
+
+        return Math.atan(num) * 180 / pi;
+    }
+
+    function deg(num) {
+
+        return num * pi / 180;
+    }
+
+    function rad(num) {
+
+        return num * 180 / pi;
+    }
+
+    function sqrt(num) {
+
+        return Math.sqrt(num);
+    }
+
+    function round(num) {
+
+        return Math.round(num);
+    }
+
+    function floor(num) {
+
+        return Math.floor(num);
+    }
+
+    function random(num) {
+
+        return Math.floor((Math.random() * num) + 1);
+    }
+
+    function qeR1(a, b, c) {
+
+        return ((0 - b) + Math.sqrt((b * b) - (4 * a * c))) / (2 * a);
+
+    }
+
+    function qeR2(a, b, c) {
+
+        return ((0 - b) - Math.sqrt((b * b) - (4 * a * c))) / (2 * a);
+
+    }
+
+    function log(x, y) {
+        return Math.log(y) / Math.log(x);
+    }
+
+    function fact(x) {
+        if (x == 0) {
+            return 1;
+        }
+        return x * fact(x - 1);
+    }
+
+    function SI(p, r, t) {
+
+        return (p * r * t) / 100;
+    }
+
+    function CI(p, r, t) {
+
+        return (p * (Math.pow((1 + (r / 100)), t))) - (p);
+    }
+
+    function BMI(w, h) {
+
+        return w / (h * h);
+    }
+
+    function len(x) {
+
+        return x.length;
+    }
+
+    function sinh(num) {
+
+        return Math.sinh(num);
+    }
+
+    function cosh(num1) {
+
+        return Math.cosh(num1);
+    }
+
+    function tanh(num2) {
+
+        return Math.tanh(num2);
+    }
+
+    function cbrt(num) {
+
+        return Math.cbrt(num);
+    }
+
+    function abs(n) {
+
+        return Math.abs(n);
+    }
+
+</script>
+</body>
+
+</html>
